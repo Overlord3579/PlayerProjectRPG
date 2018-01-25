@@ -88,7 +88,9 @@ class Player
     // instance variables (properties) *******************
     private int myDirection;   // -1 west, 1 east
     private int myX;           // location on x-axis
-    private int mySpeed;       // speed of player
+    private int myHealth;       // Health of player
+    private int myAttack;       //Attack of player
+    private int myMana;         //Mana of player
     
     // default constructor *******************************
     
@@ -96,16 +98,20 @@ class Player
     {
         myDirection = 1;
         myX = 0;
-        mySpeed = 1;
+        myHealth = 9000;
+        myAttack = 2000;
+        myMana = 50;
     }
     
     // other constructor *********************************
     
-    public Player(int direction, int x, int speed)
+    public Player(int direction, int x, int health, int mana, int attack)
     {
         myDirection = direction;
         myX = x;
-        mySpeed = speed;
+        myHealth = health;
+        myMana = mana;
+        myAttack = attack;
     }
     
     // accessor methods (getters) ***********************
@@ -120,9 +126,19 @@ class Player
         return myX;
     }
 
-    public int getSpeed()
+    public int getHealth()
     {
-        return mySpeed;
+        return myHealth;
+    }
+    
+    public int getMana()
+    {
+        return myMana();
+    }
+    
+    public int getAttack()
+    {
+        return myAttack;
     }
  
     // modifier methods (setters or mutators) *************
@@ -137,9 +153,19 @@ class Player
         myX = x;
     }
 
-    public void setSpeed(int speed)
+    public void setHealth(int health)
     {
-        mySpeed = speed;
+        myHealth = health;
+    }
+    
+    public void setMana(int mana)
+    {
+        myMana = mana;
+    }
+    
+    public void setAttack(int attack)
+    {
+        myAttack = attack;
     }
     
     // interesting methods *****************************
@@ -162,15 +188,17 @@ class Boss
         myDirection = -1;
         myX = 5;
         myHealth = 79000;
+        myAttack = 500;
     }
     
     // other constructor *********************************
     
-    public Boss(int direction, int x, int health)
+    public Boss(int direction, int x, int health, int attack)
     {
         myDirection = direction;
         myX = x;
         myHealth = health;
+        myAttack = attack;
     }
     
     // accessor methods (getters) ***********************
@@ -185,9 +213,14 @@ class Boss
         return myX;
     }
 
-    public int getSpeed()
+    public int getHealth()
     {
-        return mySpeed;
+        return myHealth;
+    }
+    
+    public int getAttack()
+    {
+        return myAttack;
     }
  
     // modifier methods (setters or mutators) *************
@@ -207,9 +240,19 @@ class Boss
         myHealth = helath;
     }
     
+    public void setHealth(int health)
+    {
+        myHealth = health;
+    }
+    
+    public void setAttack(int attack)
+    {
+        myAttack = attack;
+    }
+    
     // interesting methods *****************************
     
-}// end of Player class
+}// end of Boss class
 
 //////////////////////////////////////////////////////
 
@@ -230,9 +273,14 @@ class World
     // interesting methods *****************************
     
     // postcondition: a new player is placed in the world
-    public void placePlayer(Player player)
+    public void placePlayer(Player cloud)
     {
         players.add(player);
+    }
+    
+    public void placeBoss(Boss dragon)
+    {
+        boss.add(dragon);
     }
     
     // display all the players in the world
