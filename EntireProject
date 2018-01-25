@@ -12,7 +12,8 @@ public class PlayerProject
 
     public static void main(String[] args) 
     {
-        Player cloud = new Player(1, 1, 3);   // player to place into the world (direction, speed, x)
+        Player cloud = new Player(1, 1, 3);   // player to place into the world (direction, health, x)
+        Boss dragon = new Boss(1, 79000, 5);
         
         World world = new World();              // the World object that contains Player objects
         
@@ -160,7 +161,7 @@ class Boss
     {
         myDirection = -1;
         myX = 5;
-        myHealth = 1;
+        myHealth = 79000;
     }
     
     // other constructor *********************************
